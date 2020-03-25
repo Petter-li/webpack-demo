@@ -21,7 +21,7 @@ module.exports = {
         contentBase: './build', //静态文件的文件夹地址，默认为当前文件夹
         compress: true //对所有服务启用gzip压缩
     },
-    mode: 'production',//模式 默认两种 production 生产环境  development 开发环境
+    mode: 'development',//模式 默认两种 production 生产环境  development 开发环境
     entry: './src/index.js', //入口
     output: {
         filename: 'bundle.[hash:8].js', //打包后的文件名,添加hash,表示每次产生新的文件，解决缓存问题
@@ -43,6 +43,21 @@ module.exports = {
     ],
     module: { //模块
         rules:[ //规则\
+            {
+                test: /\.js$/,
+                use: {
+                    loader:'babel-loader',
+                    options: { 
+                        presets: [
+                            '@babel/preset-env'//用babel 把ES6转为ES5
+                        ],
+                        plugins: [//支持ES提案语法
+                            ["@babel/plugin-proposal-decorators", { "legacy": true }],//装饰器
+                            ["@babel/plugin-proposal-class-properties", { "loose" : true }]//class语法
+                        ]
+                    }
+                }
+            },
             // css loader 解析@import这种CSS语法
             // style-loader 将CSS文件插入到head标签中
             // 单一loader用字符串，多个loader用数组
