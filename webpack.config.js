@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离CSS
 const OptimizeCss = require('optimize-css-assets-webpack-plugin');//压缩优化CSS
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //压缩优化JS
+const webpack = require('webpack');
 module.exports = {
     optimization: {
         minimizer: [
@@ -39,12 +40,24 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'main.css'
+        }),
+        new webpack.ProvidePlugin({ //在每个模块中都注入$符
+            $: 'jquery'
         })
     ],
     module: { //模块
-        rules:[ //规则\
-            {
+        rules:[ //规则\ loader 从右往左执行，从下往上执行
+            /* {
                 test: /\.js$/,
+                enforce: 'pre', //previous 在普通loader前执行 //post 在普通loader之后执行
+                use: {
+                    loader: 'eslint-loader'
+                }
+            }, */
+            {
+                test: /\.js$/, // 普通的loader
+                include: path.resolve(__dirname, 'src'),//只在项目目录的src下进行匹配
+                exclude: /node_modules/, //不在node_modules下进行匹配
                 use: {
                     loader:'babel-loader',
                     options: { 
@@ -53,7 +66,8 @@ module.exports = {
                         ],
                         plugins: [//支持ES提案语法
                             ["@babel/plugin-proposal-decorators", { "legacy": true }],//装饰器
-                            ["@babel/plugin-proposal-class-properties", { "loose" : true }]//class语法
+                            ["@babel/plugin-proposal-class-properties", { "loose" : true }],//class语法
+                            "@babel/plugin-transform-runtime"//运行时转化内置API语法等如 generator
                         ]
                     }
                 }

@@ -1,4 +1,4 @@
-
+/* 
 require('./index.css')
 require('./index.less')
 const str = require('./a.js');
@@ -17,4 +17,5 @@ console.log(a.a);
 
 function log(target) {
     console.log(target);
-}
+} */
+console.log($);
