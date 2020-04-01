@@ -86,36 +86,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/a.js":
-/*!******************!*\
-  !*** ./src/a.js ***!
-  \******************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = 'lixin';\n\n//# sourceURL=webpack:///./src/a.js?");
-
-/***/ }),
-
-/***/ "./src/index.css":
-/*!***********************!*\
-  !*** ./src/index.css ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/index.css?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var _class, _temp;\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\n__webpack_require__(/*! ./index.css */ \"./src/index.css\");\n\n__webpack_require__(/*! ./index.less */ \"./src/index.less\");\n\nvar str = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\n\nconsole.log(str);\n\nvar fn = function fn() {\n  console.log('1234');\n};\n\nfn();\n\nvar A = log(_class = (_temp = function A() {\n  _classCallCheck(this, A);\n\n  this.a = 1;\n}, _temp)) || _class;\n\nvar a = new A();\nconsole.log(a.a);\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.less */ \"./src/index.less\");\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_0__);\n //webpack中打包图片\n//fileloader会在内部生成一张图片，并返回地址\n// 1)js中创建图片\n\n/* import head from './head.png'//把图片引入，返回的结果是一个新的图片地址\r\nconst image = new Image();\r\nimage.src = head;\r\ndocument.body.appendChild(image); */\n// 2)css中引入\n// 3)html中引入 \n\n/* \r\nrequire('./index.css')\r\nrequire('./index.less')\r\nconst str = require('./a.js');\r\nconsole.log(str);\r\nconst fn = () => {\r\n    console.log('1234');\r\n}\r\nfn();\r\n\r\n@log\r\nclass A {\r\n    a =1\r\n}\r\nconst a = new A();\r\nconsole.log(a.a);\r\n\r\nfunction log(target) {\r\n    console.log(target);\r\n} */\n\n/* console.log($); */\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

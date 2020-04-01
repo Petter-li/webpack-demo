@@ -39,7 +39,7 @@ module.exports = {
             hash: true, //添加引用hash，解决缓存问题
         }),
         new MiniCssExtractPlugin({
-            filename: 'main.css'
+            filename: 'css/main.css'
         }),
         new webpack.ProvidePlugin({ //在每个模块中都注入$符
             $: 'jquery'
@@ -47,6 +47,29 @@ module.exports = {
     ],
     module: { //模块
         rules:[ //规则\ loader 从右往左执行，从下往上执行
+            {
+                test: /\.(htm|html)$/i,
+                use: 'html-withimg-loader'//处理在html中直接引入图片
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use:{
+                    //当图片小于200k时，转为base来应用图片，否则用file-loader来产生真实图片
+                    loader:'url-loader',
+                    options:{
+                        limit: 200*1024,
+                        esModule: false,
+                        outputPath: 'img/'
+                    }
+                }
+                /* use: [{
+                    loader: 'file-loader',//处理在js和css中引入图片
+                    options: {
+                        esModule: false, 
+                    },
+                }] */
+                 
+            },
             /* {
                 test: /\.js$/,
                 enforce: 'pre', //previous 在普通loader前执行 //post 在普通loader之后执行
