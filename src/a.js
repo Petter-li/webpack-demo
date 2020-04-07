@@ -1,7 +1,6 @@
 module.exports = 'lixin';
 class B {
     constructor() {
-        console.log('init B');
     }
 }
 
