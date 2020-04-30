@@ -46,7 +46,7 @@
     "@babel/runtime": "^7.9.2",
     "autoprefixer": "^9.7.4",
     "commitizen": "^4.0.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "postcss-loader": "^3.0.0"
   }
 }
